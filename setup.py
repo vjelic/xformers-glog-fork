@@ -593,6 +593,16 @@ def get_extensions():
 
         arch_list = os.getenv("HIP_ARCHITECTURES", "native").split()
 
+        # Support for custom CK build configuration
+        build_dev = os.getenv("BUILD_DEV", "0") == "1"
+        if build_dev:
+            cc_flag += ["-DBUILD_DEV=ON"]
+
+        # Add CMAKE configuration support
+        cmake_cxx_compiler = os.getenv("CMAKE_CXX_COMPILER")
+        if cmake_cxx_compiler:
+            cc_flag += [f"-DCMAKE_CXX_COMPILER={cmake_cxx_compiler}"]
+
         offload_compress_flag = []
         if hip_version >= "6.2.":
             offload_compress_flag = ["--offload-compress"]
