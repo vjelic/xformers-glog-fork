@@ -1,0 +1,228 @@
+{
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Glog.AI",
+          "organization": "Glog.AI",
+          "fullName": "Glog, Making software more secure",
+          "version": "1.0.0",
+          "semanticVersion": "1.0.0",
+          "informationUri": "https://www.glog.ai",
+          "rules": [
+            {
+              "id": "glog-82279509-dc5f-4b2f-a50c-388568e6d81f",
+              "help": {
+                "text": "",
+                "markdown": "## Description\n\nThe `shell=True` subprocess call security vulnerability in Python occurs when a subprocess is invoked with `shell=True`. This can lead to shell injection, a form of security vulnerability that can allow an attacker to execute arbitrary commands in the shell. This is particularly dangerous if your program is running with special privileges.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, avoid using `shell=True` in your subprocess calls whenever possible. If you must use it, be sure to properly sanitize any user-supplied input to prevent shell injection attacks. \n\n## Source Code Fix Recommendation\n\nInstead of using `shell=True`, you can pass the command and its arguments as a list. Here's an example:\n\n```python\nimport subprocess\n\n# Vulnerable code\n# subp = subprocess.Popen(\"ls -l\", shell=True)\n\n# Recommended fix\nsubp = subprocess.Popen([\"ls\", \"-l\"])\n```\n\nIn the fixed code, the command and its arguments are passed as a list, not a string. This prevents shell injection because the arguments are not processed by the shell.\n\n## Library Dependencies\n\nThe code example requires the `subprocess` module, which is included in the Python Standard Library. No additional library dependencies are required.\n\n## References\n\n- [OWASP Command Injection](https://owasp.org/www-community/attacks/Command_Injection)\n- [CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)\n\nPlease note that the links provided are active and accessible to anonymous users at the time of writing."
+              },
+              "properties": {
+                "tags": [
+                  "B602"
+                ]
+              }
+            },
+            {
+              "id": "glog-43161c8a-409b-43d2-a71a-ea3a51dbf10b",
+              "help": {
+                "text": "",
+                "markdown": "## Description\n\nUntrusted Data Deserialization Vulnerability in Pickle and Related Modules is a critical security vulnerability in Python. The `pickle` module in Python is used for serializing and deserializing Python object structures. However, it is not safe to deserialize data that comes from an untrusted or unauthenticated source. The reason is that the `pickle` module is capable of executing arbitrary code during deserialization. If an attacker can control the input to `pickle.load()`, they can create a payload that executes arbitrary code when it is deserialized, leading to a Remote Code Execution (RCE) vulnerability.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, you should avoid using `pickle` or similar modules (like `cPickle`, `dill`, etc.) to deserialize data from untrusted sources. Instead, use safer alternatives like `json` or `yaml.safe_load()` for deserialization. \n\nIf you must use `pickle`, ensure that the data you are deserializing is from a trusted and authenticated source. You can also use cryptographic signatures to verify the authenticity of the serialized data before deserializing it.\n\n## Source Code Fix Recommendation\n\nReplace the `pickle` module with a safer alternative like `json`. Here's how you can do it:\n\n```python\nimport json\n\n# Load JSON data from a file\nwith open('file.json', 'r') as f:\n    self.examples = json.load(f)\n```\n\n## Library Dependencies\n\nThe code example requires the `json` library, which is included in the standard Python library.\n\n## References\n\n- [OWASP Python Security - Deserialization](https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html#python)\n- [CWE-502: Deserialization of Untrusted Data](https://cwe.mitre.org/data/definitions/502.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B301"
+                ]
+              }
+            },
+            {
+              "id": "glog-1a74e72d-6354-4970-81cd-702977a979cb",
+              "help": {
+                "text": "",
+                "markdown": "## Description\n\n\"Exec Usage Detected\" is a vulnerability in Python programming language that arises when the `exec()` function is used. The `exec()` function is a built-in Python function that executes the Python code, which is passed as an argument. This function can be a serious security risk if it is used to execute arbitrary user-supplied code, as it can lead to code injection attacks.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, avoid using the `exec()` function whenever possible, especially with user-supplied input. If you must use it, make sure to sanitize and validate the input to ensure it does not contain any malicious code. \n\n## Source Code Fix Recommendation\n\nInstead of using `exec()`, consider using safer alternatives like `ast.literal_eval()`. This function only evaluates a string containing a Python literal or container display. It does not evaluate complex expressions, and thus, it is much safer.\n\nHere is a fix for the specific vulnerability sink:\n\n```python\nimport ast\n\n# Instead of this:\n# exec(code, kernel.fn.__globals__, _locals)\n\n# Do this:\nast.literal_eval(code)\n```\n\n## Library Dependencies\n\nThe code example does not require any external library dependencies to execute properly. It only uses built-in Python functions and modules.\n\n## OWASP and CWE Resources\n\n- [CWE-94: Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)\n\nPlease note that the links provided are active and accessible to anonymous users at the time of writing this report."
+              },
+              "properties": {
+                "tags": [
+                  "B102"
+                ]
+              }
+            },
+            {
+              "id": "glog-332e3593-e8a8-477a-966e-00c203c63e4e",
+              "help": {
+                "text": "",
+                "markdown": "## Description\n\n\"Shell Process Initiation: Potential Injection Vulnerability Detected\" is a security vulnerability that can occur in Python programming language when the `os.system()` function is used. This function executes a shell command from a Python script. If the command string includes unsanitized user input, it can lead to shell injection, where an attacker can execute arbitrary commands on the host system.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, avoid using `os.system()` to execute shell commands, especially when the command string includes user input. Instead, use functions from the `subprocess` module, which can take a list of arguments and do not involve a shell interpreter.\n\n## Source Code Fix Recommendation\n\nInstead of:\n\n```python\nimport os\nos.system(\"echo \" + user_input)\n```\n\nUse:\n\n```python\nimport subprocess\nsubprocess.run([\"echo\", user_input])\n```\n\n## Library Dependencies\n\nThe code example requires the `subprocess` module, which is included in the Python Standard Library.\n\n## References\n\n- [OWASP Python Security - Command Injection](https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html)\n- [CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)"
+              },
+              "properties": {
+                "tags": [
+                  "B605"
+                ]
+              }
+            }
+          ],
+          "language": "en-US",
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "isComprehensive": false
+        }
+      },
+      "language": "en-US",
+      "results": [
+        {
+          "ruleId": "glog-82279509-dc5f-4b2f-a50c-388568e6d81f",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "\"Shell=True Subprocess Call Security Vulnerability Detected\""
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/profiler/find_slowest.py"
+                },
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 12,
+                  "endLine": 90,
+                  "endColumn": 6,
+                  "snippet": {
+                    "text": "    subp = subprocess.Popen(\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 89,
+                  "endLine": 93,
+                  "snippet": {
+                    "text": "    subp = subprocess.Popen(\n        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL\n    )\n    try:\n        kernel_events = pd.read_csv(subp.stdout, names=[\"name\", \"dur\"])\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "HIGH",
+            "issue_confidence": "HIGH"
+          }
+        },
+        {
+          "ruleId": "glog-43161c8a-409b-43d2-a71a-ea3a51dbf10b",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "\"Untrusted Data Deserialization Vulnerability in Pickle and Related Modules\""
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/code/dataset.py"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 29,
+                  "endLine": 22,
+                  "endColumn": 43,
+                  "snippet": {
+                    "text": "            self.examples = pickle.load(f)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 21,
+                  "endLine": 23,
+                  "snippet": {
+                    "text": "        with open(file_path, \"rb\") as f:\n            self.examples = pickle.load(f)\n\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "HIGH"
+          }
+        },
+        {
+          "ruleId": "glog-1a74e72d-6354-4970-81cd-702977a979cb",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Exec Usage Detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/triton/vararg_kernel.py"
+                },
+                "region": {
+                  "startLine": 247,
+                  "startColumn": 5,
+                  "endLine": 247,
+                  "endColumn": 47,
+                  "snippet": {
+                    "text": "    exec(code, kernel.fn.__globals__, _locals)\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 246,
+                  "endLine": 248,
+                  "snippet": {
+                    "text": "    _locals: Dict[str, Any] = {}\n    exec(code, kernel.fn.__globals__, _locals)\n    assert len(_locals) == 1, len(_locals)\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "MEDIUM",
+            "issue_confidence": "HIGH"
+          }
+        },
+        {
+          "ruleId": "glog-332e3593-e8a8-477a-966e-00c203c63e4e",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "\"Shell Process Initiation: Potential Injection Vulnerability Detected\""
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/batch_submit.py"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 13,
+                  "endLine": 45,
+                  "endColumn": 14,
+                  "snippet": {
+                    "text": "            os.system(\n"
+                  }
+                },
+                "contextRegion": {
+                  "startLine": 43,
+                  "endLine": 49,
+                  "snippet": {
+                    "text": "        for task in args.tasks:\n            os.system(\n                \"python3 run_with_submitit.py\"\n                + f\" --attention {attention}  --task {task} --config {args.config_path}\"\n                + f\" --checkpoint_dir {args.checkpoint_path}/{attention}/{task}\"\n                + f\" --partition {args.partition}\"\n            )\n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "issue_severity": "HIGH",
+            "issue_confidence": "HIGH"
+          }
+        }
+      ],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ]
+    }
+  ]
+}
