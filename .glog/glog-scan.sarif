@@ -12,30 +12,6 @@
           "informationUri": "https://www.glog.ai",
           "rules": [
             {
-              "id": "43529719-c52a-3fff-9265-b20bb21ada60",
-              "name": "resources.rules.missing-image-version",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.missing-image-version"
-              },
-              "fullDescription": {
-                "text": "Images should be tagged with an explicit version to produce deterministic container images."
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "Images should be tagged with an explicit version to produce deterministic container images.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Images should be tagged with an explicit version to produce deterministic container images.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3006](https://github.com/hadolint/hadolint/wiki/DL3006)\n"
-              },
-              "properties": {
-                "precision": "very-high",
-                "tags": [
-                  "resources.rules.missing-image-version"
-                ]
-              }
-            },
-            {
               "id": "440ad080-bb1a-3874-9199-3e2028c5d7f3",
               "name": "resources.rules.missing-pip-no-cache-dir",
               "shortDescription": {
@@ -56,6 +32,54 @@
                 "precision": "very-high",
                 "tags": [
                   "resources.rules.missing-pip-no-cache-dir"
+                ]
+              }
+            },
+            {
+              "id": "28e138a8-5ffd-3837-9026-c5fa33aa9605",
+              "name": "resources.rules.use-workdir",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.use-workdir"
+              },
+              "fullDescription": {
+                "text": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3003](https://github.com/hadolint/hadolint/wiki/DL3003)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.use-workdir"
+                ]
+              }
+            },
+            {
+              "id": "582d8e0f-a5a9-3087-bd93-4fd0b5e9bda5",
+              "name": "resources.rules.dangerous-subprocess-use",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.dangerous-subprocess-use"
+              },
+              "fullDescription": {
+                "text": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://stackoverflow.com/questions/3172470/actual-meaning-of-shell-true-in-subprocess](https://stackoverflow.com/questions/3172470/actual-meaning-of-shell-true-in-subprocess)\n - [https://docs.python.org/3/library/subprocess.html](https://docs.python.org/3/library/subprocess.html)\n - [https://docs.python.org/3/library/shlex.html](https://docs.python.org/3/library/shlex.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.dangerous-subprocess-use"
                 ]
               }
             },
@@ -108,30 +132,6 @@
               }
             },
             {
-              "id": "582d8e0f-a5a9-3087-bd93-4fd0b5e9bda5",
-              "name": "resources.rules.dangerous-subprocess-use",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.dangerous-subprocess-use"
-              },
-              "fullDescription": {
-                "text": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://stackoverflow.com/questions/3172470/actual-meaning-of-shell-true-in-subprocess](https://stackoverflow.com/questions/3172470/actual-meaning-of-shell-true-in-subprocess)\n - [https://docs.python.org/3/library/subprocess.html](https://docs.python.org/3/library/subprocess.html)\n - [https://docs.python.org/3/library/shlex.html](https://docs.python.org/3/library/shlex.html)\n"
-              },
-              "properties": {
-                "precision": "very-high",
-                "tags": [
-                  "resources.rules.dangerous-subprocess-use"
-                ]
-              }
-            },
-            {
               "id": "97afeb79-4a07-30e7-b869-e735e0673253",
               "name": "resources.rules.dlint-catastrophic-redos",
               "shortDescription": {
@@ -156,26 +156,51 @@
               }
             },
             {
-              "id": "28e138a8-5ffd-3837-9026-c5fa33aa9605",
-              "name": "resources.rules.use-workdir",
+              "id": "43529719-c52a-3fff-9265-b20bb21ada60",
+              "name": "resources.rules.missing-image-version",
               "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.use-workdir"
+                "text": "Opengrep Finding: resources.rules.missing-image-version"
               },
               "fullDescription": {
-                "text": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner."
+                "text": "Images should be tagged with an explicit version to produce deterministic container images."
               },
               "defaultConfiguration": {
                 "enabled": true,
                 "level": "warning"
               },
               "help": {
-                "text": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3003](https://github.com/hadolint/hadolint/wiki/DL3003)\n"
+                "text": "Images should be tagged with an explicit version to produce deterministic container images.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Images should be tagged with an explicit version to produce deterministic container images.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3006](https://github.com/hadolint/hadolint/wiki/DL3006)\n"
               },
               "properties": {
                 "precision": "very-high",
                 "tags": [
-                  "resources.rules.use-workdir"
+                  "resources.rules.missing-image-version"
+                ]
+              }
+            },
+            {
+              "id": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
+              "name": "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
+              "shortDescription": {
+                "text": "Opengrep Finding: trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
+              },
+              "fullDescription": {
+                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "error"
+              },
+              "helpUri": "https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
+              "help": {
+                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch)\n - [https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/](https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
                 ]
               }
             },
@@ -253,32 +278,32 @@
               }
             },
             {
-              "id": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
-              "name": "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
+              "id": "b98c083d-cd74-300b-8a42-bb7c172bc56d",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
               "shortDescription": {
-                "text": "Opengrep Finding: trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
               },
               "fullDescription": {
-                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
               },
               "defaultConfiguration": {
                 "enabled": true,
-                "level": "error"
+                "level": "warning"
               },
-              "helpUri": "https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
               "help": {
-                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch)\n - [https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/](https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/)\n"
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
               },
               "properties": {
                 "precision": "very-high",
                 "tags": [
-                  "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
                 ]
               }
             },
             {
-              "id": "b98c083d-cd74-300b-8a42-bb7c172bc56d",
+              "id": "dead4e5c-f2b2-34b4-8061-2cc49d025a14",
               "name": "python.lang.security.deserialization.pickle.avoid-pickle",
               "shortDescription": {
                 "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
@@ -353,31 +378,6 @@
               }
             },
             {
-              "id": "dead4e5c-f2b2-34b4-8061-2cc49d025a14",
-              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
-              "shortDescription": {
-                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
-              },
-              "fullDescription": {
-                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
-              "help": {
-                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
-              },
-              "properties": {
-                "precision": "very-high",
-                "tags": [
-                  "python.lang.security.deserialization.pickle.avoid-pickle"
-                ]
-              }
-            },
-            {
               "id": "c453b987-1539-35ac-b773-3bd037b398c4",
               "name": "python.lang.security.deserialization.pickle.avoid-pickle",
               "shortDescription": {
@@ -428,6 +428,30 @@
               }
             },
             {
+              "id": "f1eb6870-f0ab-327f-889b-bed1a01361d5",
+              "name": "resources.rules.eqeq-is-bad",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.eqeq-is-bad"
+              },
+              "fullDescription": {
+                "text": "Detected a useless comparison operation `$X == $X` or `$X != $X`. This\noperation is always true.\nIf testing for floating point NaN, use `math.isnan`, or\n`cmath.isnan` if the number is complex.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "error"
+              },
+              "help": {
+                "text": "Detected a useless comparison operation `$X == $X` or `$X != $X`. This\noperation is always true.\nIf testing for floating point NaN, use `math.isnan`, or\n`cmath.isnan` if the number is complex.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Detected a useless comparison operation `$X == $X` or `$X != $X`. This\noperation is always true.\nIf testing for floating point NaN, use `math.isnan`, or\n`cmath.isnan` if the number is complex.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.eqeq-is-bad"
+                ]
+              }
+            },
+            {
               "id": "bb0224c1-ed50-382e-b0e2-e2bda01282fa",
               "name": "python.lang.security.deserialization.pickle.avoid-pickle",
               "shortDescription": {
@@ -453,26 +477,26 @@
               }
             },
             {
-              "id": "f1eb6870-f0ab-327f-889b-bed1a01361d5",
-              "name": "resources.rules.eqeq-is-bad",
+              "id": "5f7d002d-9747-3b4e-927e-e947a37cf6f9",
+              "name": "resources.rules.insecure-compile-use",
               "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.eqeq-is-bad"
+                "text": "Opengrep Finding: resources.rules.insecure-compile-use"
               },
               "fullDescription": {
-                "text": "Detected a useless comparison operation `$X == $X` or `$X != $X`. This\noperation is always true.\nIf testing for floating point NaN, use `math.isnan`, or\n`cmath.isnan` if the number is complex.\n"
+                "text": "The Python 'compile' function is not secure against maliciously constructed input"
               },
               "defaultConfiguration": {
                 "enabled": true,
-                "level": "error"
+                "level": "warning"
               },
               "help": {
-                "text": "Detected a useless comparison operation `$X == $X` or `$X != $X`. This\noperation is always true.\nIf testing for floating point NaN, use `math.isnan`, or\n`cmath.isnan` if the number is complex.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Detected a useless comparison operation `$X == $X` or `$X != $X`. This\noperation is always true.\nIf testing for floating point NaN, use `math.isnan`, or\n`cmath.isnan` if the number is complex.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+                "text": "The Python 'compile' function is not secure against maliciously constructed input\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "The Python 'compile' function is not secure against maliciously constructed input\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
               },
               "properties": {
                 "precision": "very-high",
                 "tags": [
-                  "resources.rules.eqeq-is-bad"
+                  "resources.rules.insecure-compile-use"
                 ]
               }
             },
@@ -498,30 +522,6 @@
                 "precision": "very-high",
                 "tags": [
                   "python.lang.security.audit.non-literal-import.non-literal-import"
-                ]
-              }
-            },
-            {
-              "id": "5f7d002d-9747-3b4e-927e-e947a37cf6f9",
-              "name": "resources.rules.insecure-compile-use",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.insecure-compile-use"
-              },
-              "fullDescription": {
-                "text": "The Python 'compile' function is not secure against maliciously constructed input"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "The Python 'compile' function is not secure against maliciously constructed input\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "The Python 'compile' function is not secure against maliciously constructed input\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
-              },
-              "properties": {
-                "precision": "very-high",
-                "tags": [
-                  "resources.rules.insecure-compile-use"
                 ]
               }
             },
@@ -562,37 +562,6 @@
       "language": "en-US",
       "results": [
         {
-          "ruleId": "43529719-c52a-3fff-9265-b20bb21ada60",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Images should be tagged with an explicit version to produce deterministic container images."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile.rocm",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 4,
-                  "startColumn": 1,
-                  "endLine": 4,
-                  "endColumn": 10,
-                  "snippet": {
-                    "text": "FROM quay.io/pypa/manylinux_2_28_x86_64 as rocm"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "5a7e9274ba04ba254db6dec4311500055012547b6919f2a1ec9f317b65d757f61ecc2a6758ca31a8c03377aeca6af5df606957b971686885ab01fa869a3d3cf2_0"
-          },
-          "properties": {}
-        },
-        {
           "ruleId": "440ad080-bb1a-3874-9199-3e2028c5d7f3",
           "kind": "fail",
           "level": "warning",
@@ -620,6 +589,68 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "881e95e631f8ed9667fab8ad0f09f13444c3bcdfbaf79d93b76178bad664f71853527371ed5a1f710507282919552ea950754a12815b3f9fab6efe7e3a1a5286_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "28e138a8-5ffd-3837-9026-c5fa33aa9605",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile.rocm",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 1,
+                  "endLine": 21,
+                  "endColumn": 5,
+                  "snippet": {
+                    "text": "RUN set -ex && \\\n  cd /opt && \\"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "53ed0be1098786306412f4311e731303efca060f8466d1208f1975ce42dd5f9ee764023341555b862059ad08a9dbbfae5c8a9d0a97304f8cfd2efd32df3f35d8_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "582d8e0f-a5a9-3087-bd93-4fd0b5e9bda5",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Detected subprocess function 'check_output' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "setup.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 18,
+                  "endLine": 135,
+                  "endColumn": 84,
+                  "snippet": {
+                    "text": "    raw_output = subprocess.check_output([nvcc_bin, \"-V\"], universal_newlines=True)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "70cedc0fbf870fbd60ecbcfbb78d5fb0161fce77e30e42578e36f19346ec22cb88b3e4d35d933432a7e83926217590c14fa350937475f43b370f06eb0ddb499b_0"
           },
           "properties": {}
         },
@@ -686,37 +717,6 @@
           "properties": {}
         },
         {
-          "ruleId": "582d8e0f-a5a9-3087-bd93-4fd0b5e9bda5",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Detected subprocess function 'check_output' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "setup.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 135,
-                  "startColumn": 18,
-                  "endLine": 135,
-                  "endColumn": 84,
-                  "snippet": {
-                    "text": "    raw_output = subprocess.check_output([nvcc_bin, \"-V\"], universal_newlines=True)"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "70cedc0fbf870fbd60ecbcfbb78d5fb0161fce77e30e42578e36f19346ec22cb88b3e4d35d933432a7e83926217590c14fa350937475f43b370f06eb0ddb499b_0"
-          },
-          "properties": {}
-        },
-        {
           "ruleId": "97afeb79-4a07-30e7-b869-e735e0673253",
           "kind": "fail",
           "level": "warning",
@@ -748,11 +748,11 @@
           "properties": {}
         },
         {
-          "ruleId": "28e138a8-5ffd-3837-9026-c5fa33aa9605",
+          "ruleId": "43529719-c52a-3fff-9265-b20bb21ada60",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner."
+            "text": "Images should be tagged with an explicit version to produce deterministic container images."
           },
           "locations": [
             {
@@ -762,19 +762,50 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 20,
+                  "startLine": 4,
                   "startColumn": 1,
-                  "endLine": 21,
-                  "endColumn": 5,
+                  "endLine": 4,
+                  "endColumn": 10,
                   "snippet": {
-                    "text": "RUN set -ex && \\\n  cd /opt && \\"
+                    "text": "FROM quay.io/pypa/manylinux_2_28_x86_64 as rocm"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "53ed0be1098786306412f4311e731303efca060f8466d1208f1975ce42dd5f9ee764023341555b862059ad08a9dbbfae5c8a9d0a97304f8cfd2efd32df3f35d8_0"
+            "matchBasedId/v1": "5a7e9274ba04ba254db6dec4311500055012547b6919f2a1ec9f317b65d757f61ecc2a6758ca31a8c03377aeca6af5df606957b971686885ab01fa869a3d3cf2_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/llama_inference/generate.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 22,
+                  "endLine": 81,
+                  "endColumn": 82,
+                  "snippet": {
+                    "text": "        checkpoint = torch.load(ckpt_path, map_location=\"cpu\", weights_only=True)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "6e1f111605ee1864b1e5f0549c61bbf4d94c1d463891568a7e985a6fb3ee4f7255a85e83e962e64f3290f9ba28e42c3ac99eb6648bd16e37acb4535bda9adeb1_0"
           },
           "properties": {}
         },
@@ -872,37 +903,6 @@
           "properties": {}
         },
         {
-          "ruleId": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "examples/llama_inference/generate.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 81,
-                  "startColumn": 22,
-                  "endLine": 81,
-                  "endColumn": 82,
-                  "snippet": {
-                    "text": "        checkpoint = torch.load(ckpt_path, map_location=\"cpu\", weights_only=True)"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "6e1f111605ee1864b1e5f0549c61bbf4d94c1d463891568a7e985a6fb3ee4f7255a85e83e962e64f3290f9ba28e42c3ac99eb6648bd16e37acb4535bda9adeb1_0"
-          },
-          "properties": {}
-        },
-        {
           "ruleId": "b98c083d-cd74-300b-8a42-bb7c172bc56d",
           "kind": "fail",
           "level": "warning",
@@ -930,6 +930,37 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "cdc4a973646246110e1124554cdc79404b9a67f385ca83a705e5c50fe447edd6e8800d3070737735d7d70f9b907fc3db5f863e300aefd7813dddfaf6263fdb5d_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "dead4e5c-f2b2-34b4-8061-2cc49d025a14",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/setup/pathfinder.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 9,
+                  "endLine": 54,
+                  "endColumn": 30,
+                  "snippet": {
+                    "text": "        pickle.dump(train, f)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "cc0c0515cb344f49dc8f7836fef357bd4982ef877d3dc384e31318356ebd542a5f09a4f09803d0fe55b84af985ad9f6618bbc5838373bcf4c14ee6c486632f61_0"
           },
           "properties": {}
         },
@@ -996,37 +1027,6 @@
           "properties": {}
         },
         {
-          "ruleId": "dead4e5c-f2b2-34b4-8061-2cc49d025a14",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "xformers/benchmarks/LRA/setup/pathfinder.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 54,
-                  "startColumn": 9,
-                  "endLine": 54,
-                  "endColumn": 30,
-                  "snippet": {
-                    "text": "        pickle.dump(train, f)"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "cc0c0515cb344f49dc8f7836fef357bd4982ef877d3dc384e31318356ebd542a5f09a4f09803d0fe55b84af985ad9f6618bbc5838373bcf4c14ee6c486632f61_0"
-          },
-          "properties": {}
-        },
-        {
           "ruleId": "c453b987-1539-35ac-b773-3bd037b398c4",
           "kind": "fail",
           "level": "warning",
@@ -1089,37 +1089,6 @@
           "properties": {}
         },
         {
-          "ruleId": "bb0224c1-ed50-382e-b0e2-e2bda01282fa",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "xformers/benchmarks/LRA/setup/text.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 45,
-                  "startColumn": 9,
-                  "endLine": 45,
-                  "endColumn": 32,
-                  "snippet": {
-                    "text": "        pickle.dump(ds_list, f)"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "9ca7c480cd55b3e39ddbdcd7351e33da52bdaf29824a57147c15a0df6a2bec03b7936a69f116e43da1532f7a88d1d454e629012bdc672b72b59168c93164af54_0"
-          },
-          "properties": {}
-        },
-        {
           "ruleId": "f1eb6870-f0ab-327f-889b-bed1a01361d5",
           "kind": "fail",
           "level": "warning",
@@ -1151,33 +1120,33 @@
           "properties": {}
         },
         {
-          "ruleId": "be7af6cf-f96c-3d3d-bec4-7604353fe89c",
+          "ruleId": "bb0224c1-ed50-382e-b0e2-e2bda01282fa",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code."
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "xformers/utils.py",
+                  "uri": "xformers/benchmarks/LRA/setup/text.py",
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 27,
-                  "startColumn": 17,
-                  "endLine": 27,
-                  "endColumn": 53,
+                  "startLine": 45,
+                  "startColumn": 9,
+                  "endLine": 45,
+                  "endColumn": 32,
                   "snippet": {
-                    "text": "                importlib.import_module(module_name)"
+                    "text": "        pickle.dump(ds_list, f)"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "c363f455c58b52bb3195ecdda1d309a93a8949f4c2351621de8fb1ce5bb78df9d83fd8ce3d44469919507274e7d1cbc389a2850fc15e99945cd1581463d0bf51_0"
+            "matchBasedId/v1": "9ca7c480cd55b3e39ddbdcd7351e33da52bdaf29824a57147c15a0df6a2bec03b7936a69f116e43da1532f7a88d1d454e629012bdc672b72b59168c93164af54_0"
           },
           "properties": {}
         },
@@ -1209,6 +1178,37 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "1427c01c01cdf1ef61bf9d360e1f55bae3f05ce06aea787dbd10e9ffe57e2ca286307270b1bc3b5beabdc72aae3e05807ff46d83c2346139a3cf0574acd8a29e_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "be7af6cf-f96c-3d3d-bec4-7604353fe89c",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/utils.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 17,
+                  "endLine": 27,
+                  "endColumn": 53,
+                  "snippet": {
+                    "text": "                importlib.import_module(module_name)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "c363f455c58b52bb3195ecdda1d309a93a8949f4c2351621de8fb1ce5bb78df9d83fd8ce3d44469919507274e7d1cbc389a2850fc15e99945cd1581463d0bf51_0"
           },
           "properties": {}
         },
