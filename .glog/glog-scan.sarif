@@ -12,50 +12,541 @@
           "informationUri": "https://www.glog.ai",
           "rules": [
             {
-              "id": "glog-755aba97-a274-4406-97c5-424e647476ef",
+              "id": "43529719-c52a-3fff-9265-b20bb21ada60",
+              "name": "resources.rules.missing-image-version",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.missing-image-version"
+              },
+              "fullDescription": {
+                "text": "Images should be tagged with an explicit version to produce deterministic container images."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
               "help": {
-                "text": "",
-                "markdown": "## Description\n\nThe `shell=True` subprocess call security vulnerability in Python occurs when a subprocess is invoked with `shell=True`. This can lead to shell injection, a form of security vulnerability that can allow an attacker to execute arbitrary commands in the shell. This is particularly dangerous if your program is running with special privileges.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, avoid using `shell=True` in your subprocess calls whenever possible. If you must use it, be sure to properly sanitize any user-supplied input to prevent shell injection attacks. \n\n## Source Code Fix Recommendation\n\nInstead of using `shell=True`, you can pass the command and its arguments as a list. Here's an example:\n\n```python\nimport subprocess\n\n# Vulnerable code\n# subp = subprocess.Popen(\"ls -l\", shell=True)\n\n# Recommended fix\nsubp = subprocess.Popen([\"ls\", \"-l\"])\n```\n\nIn the fixed code, the command and its arguments are passed as a list, not a string. This prevents shell injection because the arguments are not processed by the shell.\n\n## Library Dependencies\n\nThe code example requires the `subprocess` module, which is included in the Python Standard Library. No additional library dependencies are required.\n\n## References\n\n- [OWASP Command Injection](https://owasp.org/www-community/attacks/Command_Injection)\n- [CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)\n\nPlease note that the links provided are active and accessible to anonymous users at the time of writing."
+                "text": "Images should be tagged with an explicit version to produce deterministic container images.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Images should be tagged with an explicit version to produce deterministic container images.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3006](https://github.com/hadolint/hadolint/wiki/DL3006)\n"
               },
               "properties": {
+                "precision": "very-high",
                 "tags": [
-                  "B602"
+                  "resources.rules.missing-image-version"
                 ]
               }
             },
             {
-              "id": "glog-fc9e2b43-83f5-4395-b594-8a99e5caa014",
+              "id": "440ad080-bb1a-3874-9199-3e2028c5d7f3",
+              "name": "resources.rules.missing-pip-no-cache-dir",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.missing-pip-no-cache-dir"
+              },
+              "fullDescription": {
+                "text": "This '$PIP install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "note"
+              },
               "help": {
-                "text": "",
-                "markdown": "## Description\n\n\"Exec Usage Detected\" is a vulnerability in Python programming language that arises when the `exec()` function is used. The `exec()` function is a built-in Python function that executes the Python code, which is passed as an argument. This function can be a serious security risk if it is used to execute arbitrary user-supplied code, as it can lead to code injection attacks.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, avoid using the `exec()` function whenever possible, especially with user-supplied input. If you must use it, make sure to sanitize and validate the input to ensure it does not contain any malicious code. \n\n## Source Code Fix Recommendation\n\nInstead of using `exec()`, consider using safer alternatives like `ast.literal_eval()`. This function only evaluates a string containing a Python literal or container display. It does not evaluate complex expressions, and thus, it is much safer.\n\nHere is a fix for the specific vulnerability sink:\n\n```python\nimport ast\n\n# Instead of this:\n# exec(code, kernel.fn.__globals__, _locals)\n\n# Do this:\nast.literal_eval(code)\n```\n\n## Library Dependencies\n\nThe code example does not require any external library dependencies to execute properly. It only uses built-in Python functions and modules.\n\n## OWASP and CWE Resources\n\n- [CWE-94: Improper Control of Generation of Code ('Code Injection')](https://cwe.mitre.org/data/definitions/94.html)\n\nPlease note that the links provided are active and accessible to anonymous users at the time of writing this report."
+                "text": "This '$PIP install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "This '$PIP install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3042](https://github.com/hadolint/hadolint/wiki/DL3042)\n"
               },
               "properties": {
+                "precision": "very-high",
                 "tags": [
-                  "B102"
+                  "resources.rules.missing-pip-no-cache-dir"
                 ]
               }
             },
             {
-              "id": "glog-4a367e78-8aca-4ab7-9973-d75671162e78",
+              "id": "edaba788-fc60-3cbb-8019-963bd77f3de7",
+              "name": "resources.rules.missing-dnf-clean-all",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.missing-dnf-clean-all"
+              },
+              "fullDescription": {
+                "text": "This dnf command does not end with '&& dnf clean all'. Running 'dnf clean all' will remove cached data and reduce package size. (This must be performed in the same RUN step.)\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
               "help": {
-                "text": "",
-                "markdown": "## Description\n\n\"Shell Process Initiation: Potential Injection Vulnerability Detected\" is a security vulnerability that can occur in Python programming language when the `os.system()` function is used. This function executes a shell command from a Python script. If the command string includes unsanitized user input, it can lead to shell injection, where an attacker can execute arbitrary commands on the host system.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, avoid using `os.system()` to execute shell commands, especially when the command string includes user input. Instead, use functions from the `subprocess` module, which can take a list of arguments and do not involve a shell interpreter.\n\n## Source Code Fix Recommendation\n\nInstead of:\n\n```python\nimport os\nos.system(\"echo \" + user_input)\n```\n\nUse:\n\n```python\nimport subprocess\nsubprocess.run([\"echo\", user_input])\n```\n\n## Library Dependencies\n\nThe code example requires the `subprocess` module, which is included in the Python Standard Library.\n\n## References\n\n- [OWASP Python Security - Command Injection](https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html)\n- [CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')](https://cwe.mitre.org/data/definitions/78.html)"
+                "text": "This dnf command does not end with '&& dnf clean all'. Running 'dnf clean all' will remove cached data and reduce package size. (This must be performed in the same RUN step.)\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "This dnf command does not end with '&& dnf clean all'. Running 'dnf clean all' will remove cached data and reduce package size. (This must be performed in the same RUN step.)\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3038](https://github.com/hadolint/hadolint/wiki/DL3038)\n"
               },
               "properties": {
+                "precision": "very-high",
                 "tags": [
-                  "B605"
+                  "resources.rules.missing-dnf-clean-all"
                 ]
               }
             },
             {
-              "id": "glog-ad87cd71-ff76-48a2-8c06-90946c610190",
+              "id": "63f1ccc9-4dee-3f07-9ae0-6ee5a45dc6fc",
+              "name": "resources.rules.dangerous-subprocess-use",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.dangerous-subprocess-use"
+              },
+              "fullDescription": {
+                "text": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
               "help": {
-                "text": "",
-                "markdown": "## Description\n\nUntrusted Data Deserialization Vulnerability in Pickle and Related Modules is a critical security vulnerability in Python. The `pickle` module in Python is used for serializing and deserializing Python object structures. However, it is not safe to deserialize data that comes from an untrusted or unauthenticated source. The reason is that the `pickle` module is capable of executing arbitrary code during deserialization. If an attacker can control the input to `pickle.load()`, they can create a payload that executes arbitrary code when it is deserialized, leading to a Remote Code Execution (RCE) vulnerability.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, you should avoid using `pickle` or similar modules (like `cPickle`, `dill`, etc.) to deserialize data from untrusted sources. Instead, use safer alternatives like `json` or `yaml.safe_load()` for deserialization. \n\nIf you must use `pickle`, ensure that the data you are deserializing is from a trusted and authenticated source. You can also use cryptographic signatures to verify the authenticity of the serialized data before deserializing it.\n\n## Source Code Fix Recommendation\n\nReplace the `pickle` module with a safer alternative like `json`. Here's how you can do it:\n\n```python\nimport json\n\n# Load JSON data from a file\nwith open('file.json', 'r') as f:\n    self.examples = json.load(f)\n```\n\n## Library Dependencies\n\nThe code example requires the `json` library, which is included in the standard Python library.\n\n## References\n\n- [OWASP Python Security - Deserialization](https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html#python)\n- [CWE-502: Deserialization of Untrusted Data](https://cwe.mitre.org/data/definitions/502.html)"
+                "text": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://stackoverflow.com/questions/3172470/actual-meaning-of-shell-true-in-subprocess](https://stackoverflow.com/questions/3172470/actual-meaning-of-shell-true-in-subprocess)\n - [https://docs.python.org/3/library/subprocess.html](https://docs.python.org/3/library/subprocess.html)\n - [https://docs.python.org/3/library/shlex.html](https://docs.python.org/3/library/shlex.html)\n"
               },
               "properties": {
+                "precision": "very-high",
                 "tags": [
-                  "B301"
+                  "resources.rules.dangerous-subprocess-use"
+                ]
+              }
+            },
+            {
+              "id": "582d8e0f-a5a9-3087-bd93-4fd0b5e9bda5",
+              "name": "resources.rules.dangerous-subprocess-use",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.dangerous-subprocess-use"
+              },
+              "fullDescription": {
+                "text": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Detected subprocess function '$FUNC' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://stackoverflow.com/questions/3172470/actual-meaning-of-shell-true-in-subprocess](https://stackoverflow.com/questions/3172470/actual-meaning-of-shell-true-in-subprocess)\n - [https://docs.python.org/3/library/subprocess.html](https://docs.python.org/3/library/subprocess.html)\n - [https://docs.python.org/3/library/shlex.html](https://docs.python.org/3/library/shlex.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.dangerous-subprocess-use"
+                ]
+              }
+            },
+            {
+              "id": "97afeb79-4a07-30e7-b869-e735e0673253",
+              "name": "resources.rules.dlint-catastrophic-redos",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.dlint-catastrophic-redos"
+              },
+              "fullDescription": {
+                "text": "Regex `$X` may be vulnerable to catastrophic backtracking, which may lead to denial of service attacks. (This rule only matches regex usage, not actual REDoS patterns. For full detection, use Semgrep Pro Engine.)"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "error"
+              },
+              "help": {
+                "text": "Regex `$X` may be vulnerable to catastrophic backtracking, which may lead to denial of service attacks. (This rule only matches regex usage, not actual REDoS patterns. For full detection, use Semgrep Pro Engine.)\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Regex `$X` may be vulnerable to catastrophic backtracking, which may lead to denial of service attacks. (This rule only matches regex usage, not actual REDoS patterns. For full detection, use Semgrep Pro Engine.)\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://r2c.dev/blog/2020/finding-python-redos-bugs-at-scale-using-dlint-and-r2c/](https://r2c.dev/blog/2020/finding-python-redos-bugs-at-scale-using-dlint-and-r2c/)\n - [https://r2c.dev/blog/2020/improving-redos-detection-with-dlint-and-r2c/](https://r2c.dev/blog/2020/improving-redos-detection-with-dlint-and-r2c/)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.dlint-catastrophic-redos"
+                ]
+              }
+            },
+            {
+              "id": "28e138a8-5ffd-3837-9026-c5fa33aa9605",
+              "name": "resources.rules.use-workdir",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.use-workdir"
+              },
+              "fullDescription": {
+                "text": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3003](https://github.com/hadolint/hadolint/wiki/DL3003)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.use-workdir"
+                ]
+              }
+            },
+            {
+              "id": "3a27f3f4-18e2-3951-9d9b-70b4aab0d9ec",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
+              },
+              "fullDescription": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
+              "help": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
+                ]
+              }
+            },
+            {
+              "id": "eca95eea-a3f2-3c7d-89eb-372e2ecb9b71",
+              "name": "resources.rules.return-not-in-function",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.return-not-in-function"
+              },
+              "fullDescription": {
+                "text": "`return` only makes sense inside a function"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "`return` only makes sense inside a function\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "`return` only makes sense inside a function\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.return-not-in-function"
+                ]
+              }
+            },
+            {
+              "id": "812cbe04-0621-3b64-915b-07c670cc42ea",
+              "name": "resources.rules.dangerous-system-call",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.dangerous-system-call"
+              },
+              "fullDescription": {
+                "text": "Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.dangerous-system-call"
+                ]
+              }
+            },
+            {
+              "id": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
+              "name": "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
+              "shortDescription": {
+                "text": "Opengrep Finding: trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
+              },
+              "fullDescription": {
+                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "error"
+              },
+              "helpUri": "https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
+              "help": {
+                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch)\n - [https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/](https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
+                ]
+              }
+            },
+            {
+              "id": "b98c083d-cd74-300b-8a42-bb7c172bc56d",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
+              },
+              "fullDescription": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
+              "help": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
+                ]
+              }
+            },
+            {
+              "id": "093133f1-83b1-3f00-8646-4e3e8b0bba82",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
+              },
+              "fullDescription": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
+              "help": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
+                ]
+              }
+            },
+            {
+              "id": "58461233-2638-3218-a423-6ca93bbc9211",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
+              },
+              "fullDescription": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
+              "help": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
+                ]
+              }
+            },
+            {
+              "id": "dead4e5c-f2b2-34b4-8061-2cc49d025a14",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
+              },
+              "fullDescription": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
+              "help": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
+                ]
+              }
+            },
+            {
+              "id": "c453b987-1539-35ac-b773-3bd037b398c4",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
+              },
+              "fullDescription": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
+              "help": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
+                ]
+              }
+            },
+            {
+              "id": "4451fa56-cfeb-39ce-9935-dba128403138",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
+              },
+              "fullDescription": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
+              "help": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
+                ]
+              }
+            },
+            {
+              "id": "bb0224c1-ed50-382e-b0e2-e2bda01282fa",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
+              },
+              "fullDescription": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
+              "help": {
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
+                ]
+              }
+            },
+            {
+              "id": "f1eb6870-f0ab-327f-889b-bed1a01361d5",
+              "name": "resources.rules.eqeq-is-bad",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.eqeq-is-bad"
+              },
+              "fullDescription": {
+                "text": "Detected a useless comparison operation `$X == $X` or `$X != $X`. This\noperation is always true.\nIf testing for floating point NaN, use `math.isnan`, or\n`cmath.isnan` if the number is complex.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "error"
+              },
+              "help": {
+                "text": "Detected a useless comparison operation `$X == $X` or `$X != $X`. This\noperation is always true.\nIf testing for floating point NaN, use `math.isnan`, or\n`cmath.isnan` if the number is complex.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Detected a useless comparison operation `$X == $X` or `$X != $X`. This\noperation is always true.\nIf testing for floating point NaN, use `math.isnan`, or\n`cmath.isnan` if the number is complex.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.eqeq-is-bad"
+                ]
+              }
+            },
+            {
+              "id": "be7af6cf-f96c-3d3d-bec4-7604353fe89c",
+              "name": "python.lang.security.audit.non-literal-import.non-literal-import",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.audit.non-literal-import.non-literal-import"
+              },
+              "fullDescription": {
+                "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.audit.non-literal-import.non-literal-import",
+              "help": {
+                "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.audit.non-literal-import.non-literal-import)\n - [https://owasp.org/Top10/A01_2021-Broken_Access_Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.audit.non-literal-import.non-literal-import"
+                ]
+              }
+            },
+            {
+              "id": "5f7d002d-9747-3b4e-927e-e947a37cf6f9",
+              "name": "resources.rules.insecure-compile-use",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.insecure-compile-use"
+              },
+              "fullDescription": {
+                "text": "The Python 'compile' function is not secure against maliciously constructed input"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "The Python 'compile' function is not secure against maliciously constructed input\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "The Python 'compile' function is not secure against maliciously constructed input\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.insecure-compile-use"
+                ]
+              }
+            },
+            {
+              "id": "7b43f62d-0908-372b-9fb7-7502e55c751c",
+              "name": "python.lang.security.audit.exec-detected.exec-detected",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.audit.exec-detected.exec-detected"
+              },
+              "fullDescription": {
+                "text": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.audit.exec-detected.exec-detected",
+              "help": {
+                "text": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.audit.exec-detected.exec-detected)\n - [https://owasp.org/Top10/A03_2021-Injection](https://owasp.org/Top10/A03_2021-Injection)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.audit.exec-detected.exec-detected"
                 ]
               }
             }
@@ -71,128 +562,235 @@
       "language": "en-US",
       "results": [
         {
-          "ruleId": "glog-755aba97-a274-4406-97c5-424e647476ef",
-          "kind": "fail",
-          "level": "error",
-          "message": {
-            "text": "\"Shell=True Subprocess Call Security Vulnerability Detected\""
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "xformers/profiler/find_slowest.py"
-                },
-                "region": {
-                  "startLine": 89,
-                  "startColumn": 12,
-                  "endLine": 90,
-                  "endColumn": 6,
-                  "snippet": {
-                    "text": "    subp = subprocess.Popen(\n"
-                  }
-                },
-                "contextRegion": {
-                  "startLine": 89,
-                  "endLine": 93,
-                  "snippet": {
-                    "text": "    subp = subprocess.Popen(\n        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL\n    )\n    try:\n        kernel_events = pd.read_csv(subp.stdout, names=[\"name\", \"dur\"])\n"
-                  }
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_severity": "HIGH",
-            "issue_confidence": "HIGH"
-          }
-        },
-        {
-          "ruleId": "glog-fc9e2b43-83f5-4395-b594-8a99e5caa014",
+          "ruleId": "43529719-c52a-3fff-9265-b20bb21ada60",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Exec Usage Detected"
+            "text": "Images should be tagged with an explicit version to produce deterministic container images."
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "xformers/triton/vararg_kernel.py"
+                  "uri": "Dockerfile.rocm",
+                  "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 247,
-                  "startColumn": 5,
-                  "endLine": 247,
-                  "endColumn": 47,
+                  "startLine": 4,
+                  "startColumn": 1,
+                  "endLine": 4,
+                  "endColumn": 10,
                   "snippet": {
-                    "text": "    exec(code, kernel.fn.__globals__, _locals)\n"
-                  }
-                },
-                "contextRegion": {
-                  "startLine": 246,
-                  "endLine": 248,
-                  "snippet": {
-                    "text": "    _locals: Dict[str, Any] = {}\n    exec(code, kernel.fn.__globals__, _locals)\n    assert len(_locals) == 1, len(_locals)\n"
+                    "text": "FROM quay.io/pypa/manylinux_2_28_x86_64 as rocm"
                   }
                 }
               }
             }
           ],
-          "properties": {
-            "issue_severity": "MEDIUM",
-            "issue_confidence": "HIGH"
-          }
-        },
-        {
-          "ruleId": "glog-4a367e78-8aca-4ab7-9973-d75671162e78",
-          "kind": "fail",
-          "level": "error",
-          "message": {
-            "text": "\"Shell Process Initiation: Potential Injection Vulnerability Detected\""
+          "fingerprints": {
+            "matchBasedId/v1": "5a7e9274ba04ba254db6dec4311500055012547b6919f2a1ec9f317b65d757f61ecc2a6758ca31a8c03377aeca6af5df606957b971686885ab01fa869a3d3cf2_0"
           },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "xformers/benchmarks/LRA/batch_submit.py"
-                },
-                "region": {
-                  "startLine": 44,
-                  "startColumn": 13,
-                  "endLine": 45,
-                  "endColumn": 14,
-                  "snippet": {
-                    "text": "            os.system(\n"
-                  }
-                },
-                "contextRegion": {
-                  "startLine": 43,
-                  "endLine": 49,
-                  "snippet": {
-                    "text": "        for task in args.tasks:\n            os.system(\n                \"python3 run_with_submitit.py\"\n                + f\" --attention {attention}  --task {task} --config {args.config_path}\"\n                + f\" --checkpoint_dir {args.checkpoint_path}/{attention}/{task}\"\n                + f\" --partition {args.partition}\"\n            )\n"
-                  }
-                }
-              }
-            }
-          ],
-          "properties": {
-            "issue_severity": "HIGH",
-            "issue_confidence": "HIGH"
-          }
+          "properties": {}
         },
         {
-          "ruleId": "glog-ad87cd71-ff76-48a2-8c06-90946c610190",
+          "ruleId": "440ad080-bb1a-3874-9199-3e2028c5d7f3",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "\"Untrusted Data Deserialization Vulnerability in Pickle and Related Modules\""
+            "text": "This 'pip install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n"
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "xformers/benchmarks/LRA/code/dataset.py"
+                  "uri": "Dockerfile.rocm",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 1,
+                  "endLine": 16,
+                  "endColumn": 31,
+                  "snippet": {
+                    "text": "RUN set -ex && \\\n  python3.11 -m pip install uv && \\"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "881e95e631f8ed9667fab8ad0f09f13444c3bcdfbaf79d93b76178bad664f71853527371ed5a1f710507282919552ea950754a12815b3f9fab6efe7e3a1a5286_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "edaba788-fc60-3cbb-8019-963bd77f3de7",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "This dnf command does not end with '&& dnf clean all'. Running 'dnf clean all' will remove cached data and reduce package size. (This must be performed in the same RUN step.)\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile.rocm",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 3,
+                  "endLine": 9,
+                  "endColumn": 13,
+                  "snippet": {
+                    "text": "  dnf config-manager --set-enabled elrepo-kernel && \\"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "53f354481d7c54a456df4f0ef2901e20751e295bf7f054b24383188c9329176167afe6789cdc8d2f9e40e519919bf30c59aff2d8cb5f5d936699608ac2a71c96_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "63f1ccc9-4dee-3f07-9ae0-6ee5a45dc6fc",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Detected subprocess function 'check_output' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "setup.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 22,
+                  "endLine": 151,
+                  "endColumn": 10,
+                  "snippet": {
+                    "text": "        raw_output = subprocess.check_output(\n            [hipcc_bin, \"--version\"], universal_newlines=True\n        )"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "70cedc0fbf870fbd60ecbcfbb78d5fb0161fce77e30e42578e36f19346ec22cb88b3e4d35d933432a7e83926217590c14fa350937475f43b370f06eb0ddb499b_1"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "582d8e0f-a5a9-3087-bd93-4fd0b5e9bda5",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Detected subprocess function 'check_output' without a static string. If this data can be\ncontrolled by a malicious actor, it may be an instance of command injection.\nAudit the use of this call to ensure it is not controllable by an external resource.\nYou may consider using 'shlex.escape()'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "setup.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 18,
+                  "endLine": 135,
+                  "endColumn": 84,
+                  "snippet": {
+                    "text": "    raw_output = subprocess.check_output([nvcc_bin, \"-V\"], universal_newlines=True)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "70cedc0fbf870fbd60ecbcfbb78d5fb0161fce77e30e42578e36f19346ec22cb88b3e4d35d933432a7e83926217590c14fa350937475f43b370f06eb0ddb499b_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "97afeb79-4a07-30e7-b869-e735e0673253",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Regex `r\"(?P<major>[0-9]+)\\.(?P<minor>[0-9])(?P<suffix>[a-zA-Z]{0,1})(?P<ptx>\\+PTX){0,1}\"` may be vulnerable to catastrophic backtracking, which may lead to denial of service attacks. (This rule only matches regex usage, not actual REDoS patterns. For full detection, use Semgrep Pro Engine.)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "setup.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 167,
+                  "startColumn": 22,
+                  "endLine": 169,
+                  "endColumn": 2,
+                  "snippet": {
+                    "text": "PARSE_CUDA_ARCH_RE = re.compile(\n    r\"(?P<major>[0-9]+)\\.(?P<minor>[0-9])(?P<suffix>[a-zA-Z]{0,1})(?P<ptx>\\+PTX){0,1}\"\n)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "eea17cd6f5a17661317f82e14a7aa6ef2edc7185483c656f678b8b226edfc7bcec7317dec86c88f43c31203b7b7c0364c7f762ee8a602d5849e2731891ab6409_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "28e138a8-5ffd-3837-9026-c5fa33aa9605",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Use 'WORKDIR' instead of 'RUN cd ...'. Using 'RUN cd ...' may not work as expected in a conatiner."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile.rocm",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 1,
+                  "endLine": 21,
+                  "endColumn": 5,
+                  "snippet": {
+                    "text": "RUN set -ex && \\\n  cd /opt && \\"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "53ed0be1098786306412f4311e731303efca060f8466d1208f1975ce42dd5f9ee764023341555b862059ad08a9dbbfae5c8a9d0a97304f8cfd2efd32df3f35d8_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "3a27f3f4-18e2-3951-9d9b-70b4aab0d9ec",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/code/dataset.py",
+                  "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
                   "startLine": 22,
@@ -200,23 +798,450 @@
                   "endLine": 22,
                   "endColumn": 43,
                   "snippet": {
-                    "text": "            self.examples = pickle.load(f)\n"
-                  }
-                },
-                "contextRegion": {
-                  "startLine": 21,
-                  "endLine": 23,
-                  "snippet": {
-                    "text": "        with open(file_path, \"rb\") as f:\n            self.examples = pickle.load(f)\n\n"
+                    "text": "            self.examples = pickle.load(f)"
                   }
                 }
               }
             }
           ],
-          "properties": {
-            "issue_severity": "MEDIUM",
-            "issue_confidence": "HIGH"
-          }
+          "fingerprints": {
+            "matchBasedId/v1": "0fa09360db3fd1b4cf89ac4f20b2c6417e8f0acb210efba2509dc2e8fcbef169096c5d4c510e05dbc1d88407b5e7e64f7f310f1196ffe913499a73e4c188b0ea_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "eca95eea-a3f2-3c7d-89eb-372e2ecb9b71",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "`return` only makes sense inside a function"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/batch_fetch_results.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 39,
+                  "endLine": 29,
+                  "endColumn": 49,
+                  "snippet": {
+                    "text": "    for attention in filter(lambda x: x.is_dir(), root.iterdir()):"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "370876684b0e7562aa781fe70a30c064463c43e7af4bb523bb52b4e2a130f4ecb7e2413d9fb00859a6b9adaad0e9edede9b84cb39ebaa7db18361aa034da01b5_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "812cbe04-0621-3b64-915b-07c670cc42ea",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/batch_submit.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 13,
+                  "endLine": 49,
+                  "endColumn": 14,
+                  "snippet": {
+                    "text": "            os.system(\n                \"python3 run_with_submitit.py\"\n                + f\" --attention {attention}  --task {task} --config {args.config_path}\"\n                + f\" --checkpoint_dir {args.checkpoint_path}/{attention}/{task}\"\n                + f\" --partition {args.partition}\"\n            )"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "725d4203a5b1aab4761aa7bda5f974315ec23dfcc33f0d807b73cf721be839c783dcd7886d35990027face92fb855cd8428d325e8f0def979671adcc26e85110_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/llama_inference/generate.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 22,
+                  "endLine": 81,
+                  "endColumn": 82,
+                  "snippet": {
+                    "text": "        checkpoint = torch.load(ckpt_path, map_location=\"cpu\", weights_only=True)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "6e1f111605ee1864b1e5f0549c61bbf4d94c1d463891568a7e985a6fb3ee4f7255a85e83e962e64f3290f9ba28e42c3ac99eb6648bd16e37acb4535bda9adeb1_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "b98c083d-cd74-300b-8a42-bb7c172bc56d",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/setup/cifar10.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 9,
+                  "endLine": 50,
+                  "endColumn": 32,
+                  "snippet": {
+                    "text": "        pickle.dump(ds_list, f)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "cdc4a973646246110e1124554cdc79404b9a67f385ca83a705e5c50fe447edd6e8800d3070737735d7d70f9b907fc3db5f863e300aefd7813dddfaf6263fdb5d_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "093133f1-83b1-3f00-8646-4e3e8b0bba82",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/setup/listops.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 9,
+                  "endLine": 44,
+                  "endColumn": 32,
+                  "snippet": {
+                    "text": "        pickle.dump(ds_list, f)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "71ceeddd295d9889ea952e73356fb2aa7acf99fcb9f28d21ffb8c364f3c6aeab2937519ea90b58aa63fa171c8505831ab984a511199447fbbe92ae330f6a3e2e_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "58461233-2638-3218-a423-6ca93bbc9211",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/setup/pathfinder.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 9,
+                  "endLine": 56,
+                  "endColumn": 28,
+                  "snippet": {
+                    "text": "        pickle.dump(dev, f)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "cc0c0515cb344f49dc8f7836fef357bd4982ef877d3dc384e31318356ebd542a5f09a4f09803d0fe55b84af985ad9f6618bbc5838373bcf4c14ee6c486632f61_1"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "dead4e5c-f2b2-34b4-8061-2cc49d025a14",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/setup/pathfinder.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 9,
+                  "endLine": 54,
+                  "endColumn": 30,
+                  "snippet": {
+                    "text": "        pickle.dump(train, f)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "cc0c0515cb344f49dc8f7836fef357bd4982ef877d3dc384e31318356ebd542a5f09a4f09803d0fe55b84af985ad9f6618bbc5838373bcf4c14ee6c486632f61_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "c453b987-1539-35ac-b773-3bd037b398c4",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/setup/pathfinder.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 9,
+                  "endLine": 58,
+                  "endColumn": 29,
+                  "snippet": {
+                    "text": "        pickle.dump(test, f)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "cc0c0515cb344f49dc8f7836fef357bd4982ef877d3dc384e31318356ebd542a5f09a4f09803d0fe55b84af985ad9f6618bbc5838373bcf4c14ee6c486632f61_2"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "4451fa56-cfeb-39ce-9935-dba128403138",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/setup/retrieval.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 9,
+                  "endLine": 46,
+                  "endColumn": 32,
+                  "snippet": {
+                    "text": "        pickle.dump(ds_list, f)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "6b77e3388c31eb18c7c0898edfd7402aa9e8137531e3708a0b0e24c2fc42b0c61531147ccf9d1704fe1b9ab4a9561d75601f317d42d1ef784d9812a132299dd1_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "bb0224c1-ed50-382e-b0e2-e2bda01282fa",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/setup/text.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 9,
+                  "endLine": 45,
+                  "endColumn": 32,
+                  "snippet": {
+                    "text": "        pickle.dump(ds_list, f)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "9ca7c480cd55b3e39ddbdcd7351e33da52bdaf29824a57147c15a0df6a2bec03b7936a69f116e43da1532f7a88d1d454e629012bdc672b72b59168c93164af54_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "f1eb6870-f0ab-327f-889b-bed1a01361d5",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "softcap == softcap is a useless equality check"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/ops/fmha/flash.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 254,
+                  "startColumn": 20,
+                  "endLine": 254,
+                  "endColumn": 34,
+                  "snippet": {
+                    "text": "            assert softcap == 0.0"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "2c1d745d2ed29dea87e0a1c88bf19175fa309d4cc168653fe21af80ad9b22e915321e66ffdf7e041632752461745cdec7476a3a3965d15434741a85284394849_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "be7af6cf-f96c-3d3d-bec4-7604353fe89c",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/utils.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 17,
+                  "endLine": 27,
+                  "endColumn": 53,
+                  "snippet": {
+                    "text": "                importlib.import_module(module_name)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "c363f455c58b52bb3195ecdda1d309a93a8949f4c2351621de8fb1ce5bb78df9d83fd8ce3d44469919507274e7d1cbc389a2850fc15e99945cd1581463d0bf51_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "5f7d002d-9747-3b4e-927e-e947a37cf6f9",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "The Python 'compile' function is not secure against maliciously constructed input"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/triton/vararg_kernel.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 244,
+                  "startColumn": 12,
+                  "endLine": 244,
+                  "endColumn": 49,
+                  "snippet": {
+                    "text": "    code = compile(new_src, fn_filename, \"exec\")"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "1427c01c01cdf1ef61bf9d360e1f55bae3f05ce06aea787dbd10e9ffe57e2ca286307270b1bc3b5beabdc72aae3e05807ff46d83c2346139a3cf0574acd8a29e_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "7b43f62d-0908-372b-9fb7-7502e55c751c",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/triton/vararg_kernel.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 247,
+                  "startColumn": 5,
+                  "endLine": 247,
+                  "endColumn": 47,
+                  "snippet": {
+                    "text": "    exec(code, kernel.fn.__globals__, _locals)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "1d051fb46f56a5f11b2cf4e0bc23577a200a67684c200bb7145dff60eb8c01e2043a48bb6958f24d4c2d99267a570ac7f5c2a8ba69680c1ef79ce46e74f855a8_0"
+          },
+          "properties": {}
         }
       ],
       "newlineSequences": [
