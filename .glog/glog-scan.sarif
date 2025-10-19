@@ -12,6 +12,30 @@
           "informationUri": "https://www.glog.ai",
           "rules": [
             {
+              "id": "440ad080-bb1a-3874-9199-3e2028c5d7f3",
+              "name": "resources.rules.missing-pip-no-cache-dir",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.missing-pip-no-cache-dir"
+              },
+              "fullDescription": {
+                "text": "This '$PIP install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "note"
+              },
+              "help": {
+                "text": "This '$PIP install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "This '$PIP install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3042](https://github.com/hadolint/hadolint/wiki/DL3042)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "resources.rules.missing-pip-no-cache-dir"
+                ]
+              }
+            },
+            {
               "id": "28e138a8-5ffd-3837-9026-c5fa33aa9605",
               "name": "resources.rules.use-workdir",
               "shortDescription": {
@@ -32,30 +56,6 @@
                 "precision": "very-high",
                 "tags": [
                   "resources.rules.use-workdir"
-                ]
-              }
-            },
-            {
-              "id": "43529719-c52a-3fff-9265-b20bb21ada60",
-              "name": "resources.rules.missing-image-version",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.missing-image-version"
-              },
-              "fullDescription": {
-                "text": "Images should be tagged with an explicit version to produce deterministic container images."
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "Images should be tagged with an explicit version to produce deterministic container images.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Images should be tagged with an explicit version to produce deterministic container images.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3006](https://github.com/hadolint/hadolint/wiki/DL3006)\n"
-              },
-              "properties": {
-                "precision": "very-high",
-                "tags": [
-                  "resources.rules.missing-image-version"
                 ]
               }
             },
@@ -156,51 +156,51 @@
               }
             },
             {
-              "id": "440ad080-bb1a-3874-9199-3e2028c5d7f3",
-              "name": "resources.rules.missing-pip-no-cache-dir",
+              "id": "43529719-c52a-3fff-9265-b20bb21ada60",
+              "name": "resources.rules.missing-image-version",
               "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.missing-pip-no-cache-dir"
+                "text": "Opengrep Finding: resources.rules.missing-image-version"
               },
               "fullDescription": {
-                "text": "This '$PIP install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "note"
-              },
-              "help": {
-                "text": "This '$PIP install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "This '$PIP install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3042](https://github.com/hadolint/hadolint/wiki/DL3042)\n"
-              },
-              "properties": {
-                "precision": "very-high",
-                "tags": [
-                  "resources.rules.missing-pip-no-cache-dir"
-                ]
-              }
-            },
-            {
-              "id": "3a27f3f4-18e2-3951-9d9b-70b4aab0d9ec",
-              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
-              "shortDescription": {
-                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
-              },
-              "fullDescription": {
-                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+                "text": "Images should be tagged with an explicit version to produce deterministic container images."
               },
               "defaultConfiguration": {
                 "enabled": true,
                 "level": "warning"
               },
-              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
               "help": {
-                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
+                "text": "Images should be tagged with an explicit version to produce deterministic container images.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Images should be tagged with an explicit version to produce deterministic container images.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/hadolint/hadolint/wiki/DL3006](https://github.com/hadolint/hadolint/wiki/DL3006)\n"
               },
               "properties": {
                 "precision": "very-high",
                 "tags": [
-                  "python.lang.security.deserialization.pickle.avoid-pickle"
+                  "resources.rules.missing-image-version"
+                ]
+              }
+            },
+            {
+              "id": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
+              "name": "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
+              "shortDescription": {
+                "text": "Opengrep Finding: trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
+              },
+              "fullDescription": {
+                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "error"
+              },
+              "helpUri": "https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
+              "help": {
+                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch)\n - [https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/](https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
                 ]
               }
             },
@@ -253,32 +253,7 @@
               }
             },
             {
-              "id": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
-              "name": "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
-              "shortDescription": {
-                "text": "Opengrep Finding: trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
-              },
-              "fullDescription": {
-                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "error"
-              },
-              "helpUri": "https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch",
-              "help": {
-                "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/trailofbits.python.pickles-in-pytorch.pickles-in-pytorch)\n - [https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/](https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/)\n"
-              },
-              "properties": {
-                "precision": "very-high",
-                "tags": [
-                  "trailofbits.python.pickles-in-pytorch.pickles-in-pytorch"
-                ]
-              }
-            },
-            {
-              "id": "b98c083d-cd74-300b-8a42-bb7c172bc56d",
+              "id": "3a27f3f4-18e2-3951-9d9b-70b4aab0d9ec",
               "name": "python.lang.security.deserialization.pickle.avoid-pickle",
               "shortDescription": {
                 "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
@@ -303,7 +278,7 @@
               }
             },
             {
-              "id": "093133f1-83b1-3f00-8646-4e3e8b0bba82",
+              "id": "b98c083d-cd74-300b-8a42-bb7c172bc56d",
               "name": "python.lang.security.deserialization.pickle.avoid-pickle",
               "shortDescription": {
                 "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
@@ -378,7 +353,7 @@
               }
             },
             {
-              "id": "c453b987-1539-35ac-b773-3bd037b398c4",
+              "id": "093133f1-83b1-3f00-8646-4e3e8b0bba82",
               "name": "python.lang.security.deserialization.pickle.avoid-pickle",
               "shortDescription": {
                 "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
@@ -403,7 +378,7 @@
               }
             },
             {
-              "id": "bb0224c1-ed50-382e-b0e2-e2bda01282fa",
+              "id": "c453b987-1539-35ac-b773-3bd037b398c4",
               "name": "python.lang.security.deserialization.pickle.avoid-pickle",
               "shortDescription": {
                 "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
@@ -477,27 +452,27 @@
               }
             },
             {
-              "id": "be7af6cf-f96c-3d3d-bec4-7604353fe89c",
-              "name": "python.lang.security.audit.non-literal-import.non-literal-import",
+              "id": "bb0224c1-ed50-382e-b0e2-e2bda01282fa",
+              "name": "python.lang.security.deserialization.pickle.avoid-pickle",
               "shortDescription": {
-                "text": "Opengrep Finding: python.lang.security.audit.non-literal-import.non-literal-import"
+                "text": "Opengrep Finding: python.lang.security.deserialization.pickle.avoid-pickle"
               },
               "fullDescription": {
-                "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code."
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
               },
               "defaultConfiguration": {
                 "enabled": true,
                 "level": "warning"
               },
-              "helpUri": "https://semgrep.dev/r/python.lang.security.audit.non-literal-import.non-literal-import",
+              "helpUri": "https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle",
               "help": {
-                "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.audit.non-literal-import.non-literal-import)\n - [https://owasp.org/Top10/A01_2021-Broken_Access_Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control)\n"
+                "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.deserialization.pickle.avoid-pickle)\n - [https://docs.python.org/3/library/pickle.html](https://docs.python.org/3/library/pickle.html)\n"
               },
               "properties": {
                 "precision": "very-high",
                 "tags": [
-                  "python.lang.security.audit.non-literal-import.non-literal-import"
+                  "python.lang.security.deserialization.pickle.avoid-pickle"
                 ]
               }
             },
@@ -549,6 +524,31 @@
                   "python.lang.security.audit.exec-detected.exec-detected"
                 ]
               }
+            },
+            {
+              "id": "be7af6cf-f96c-3d3d-bec4-7604353fe89c",
+              "name": "python.lang.security.audit.non-literal-import.non-literal-import",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.lang.security.audit.non-literal-import.non-literal-import"
+              },
+              "fullDescription": {
+                "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.lang.security.audit.non-literal-import.non-literal-import",
+              "help": {
+                "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.lang.security.audit.non-literal-import.non-literal-import)\n - [https://owasp.org/Top10/A01_2021-Broken_Access_Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control)\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "tags": [
+                  "python.lang.security.audit.non-literal-import.non-literal-import"
+                ]
+              }
             }
           ],
           "language": "en-US",
@@ -561,6 +561,37 @@
       },
       "language": "en-US",
       "results": [
+        {
+          "ruleId": "440ad080-bb1a-3874-9199-3e2028c5d7f3",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "This 'pip install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile.rocm",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 1,
+                  "endLine": 16,
+                  "endColumn": 31,
+                  "snippet": {
+                    "text": "RUN set -ex && \\\n  python3.11 -m pip install uv && \\"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "881e95e631f8ed9667fab8ad0f09f13444c3bcdfbaf79d93b76178bad664f71853527371ed5a1f710507282919552ea950754a12815b3f9fab6efe7e3a1a5286_0"
+          },
+          "properties": {}
+        },
         {
           "ruleId": "28e138a8-5ffd-3837-9026-c5fa33aa9605",
           "kind": "fail",
@@ -589,37 +620,6 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "53ed0be1098786306412f4311e731303efca060f8466d1208f1975ce42dd5f9ee764023341555b862059ad08a9dbbfae5c8a9d0a97304f8cfd2efd32df3f35d8_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "43529719-c52a-3fff-9265-b20bb21ada60",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Images should be tagged with an explicit version to produce deterministic container images."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile.rocm",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 4,
-                  "startColumn": 1,
-                  "endLine": 4,
-                  "endColumn": 10,
-                  "snippet": {
-                    "text": "FROM quay.io/pypa/manylinux_2_28_x86_64 as rocm"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "5a7e9274ba04ba254db6dec4311500055012547b6919f2a1ec9f317b65d757f61ecc2a6758ca31a8c03377aeca6af5df606957b971686885ab01fa869a3d3cf2_0"
           },
           "properties": {}
         },
@@ -748,11 +748,11 @@
           "properties": {}
         },
         {
-          "ruleId": "440ad080-bb1a-3874-9199-3e2028c5d7f3",
+          "ruleId": "43529719-c52a-3fff-9265-b20bb21ada60",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "This 'pip install' is missing '--no-cache-dir'. This flag prevents\npackage archives from being kept around, thereby reducing image size.\nAdd '--no-cache-dir'.\n"
+            "text": "Images should be tagged with an explicit version to produce deterministic container images."
           },
           "locations": [
             {
@@ -762,50 +762,50 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 15,
+                  "startLine": 4,
                   "startColumn": 1,
-                  "endLine": 16,
-                  "endColumn": 31,
+                  "endLine": 4,
+                  "endColumn": 10,
                   "snippet": {
-                    "text": "RUN set -ex && \\\n  python3.11 -m pip install uv && \\"
+                    "text": "FROM quay.io/pypa/manylinux_2_28_x86_64 as rocm"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "881e95e631f8ed9667fab8ad0f09f13444c3bcdfbaf79d93b76178bad664f71853527371ed5a1f710507282919552ea950754a12815b3f9fab6efe7e3a1a5286_0"
+            "matchBasedId/v1": "5a7e9274ba04ba254db6dec4311500055012547b6919f2a1ec9f317b65d757f61ecc2a6758ca31a8c03377aeca6af5df606957b971686885ab01fa869a3d3cf2_0"
           },
           "properties": {}
         },
         {
-          "ruleId": "3a27f3f4-18e2-3951-9d9b-70b4aab0d9ec",
+          "ruleId": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+            "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "xformers/benchmarks/LRA/code/dataset.py",
+                  "uri": "examples/llama_inference/generate.py",
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 22,
-                  "startColumn": 29,
-                  "endLine": 22,
-                  "endColumn": 43,
+                  "startLine": 81,
+                  "startColumn": 22,
+                  "endLine": 81,
+                  "endColumn": 82,
                   "snippet": {
-                    "text": "            self.examples = pickle.load(f)"
+                    "text": "        checkpoint = torch.load(ckpt_path, map_location=\"cpu\", weights_only=True)"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "0fa09360db3fd1b4cf89ac4f20b2c6417e8f0acb210efba2509dc2e8fcbef169096c5d4c510e05dbc1d88407b5e7e64f7f310f1196ffe913499a73e4c188b0ea_0"
+            "matchBasedId/v1": "6e1f111605ee1864b1e5f0549c61bbf4d94c1d463891568a7e985a6fb3ee4f7255a85e83e962e64f3290f9ba28e42c3ac99eb6648bd16e37acb4535bda9adeb1_0"
           },
           "properties": {}
         },
@@ -872,33 +872,33 @@
           "properties": {}
         },
         {
-          "ruleId": "5c4c2455-7b78-3925-90d1-fb4c5cd72973",
+          "ruleId": "3a27f3f4-18e2-3951-9d9b-70b4aab0d9ec",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Functions reliant on pickle can result in arbitrary code execution.  Consider loading from `state_dict`, using fickling, or switching to a safer serialization method like ONNX"
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "examples/llama_inference/generate.py",
+                  "uri": "xformers/benchmarks/LRA/code/dataset.py",
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 81,
-                  "startColumn": 22,
-                  "endLine": 81,
-                  "endColumn": 82,
+                  "startLine": 22,
+                  "startColumn": 29,
+                  "endLine": 22,
+                  "endColumn": 43,
                   "snippet": {
-                    "text": "        checkpoint = torch.load(ckpt_path, map_location=\"cpu\", weights_only=True)"
+                    "text": "            self.examples = pickle.load(f)"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "6e1f111605ee1864b1e5f0549c61bbf4d94c1d463891568a7e985a6fb3ee4f7255a85e83e962e64f3290f9ba28e42c3ac99eb6648bd16e37acb4535bda9adeb1_0"
+            "matchBasedId/v1": "0fa09360db3fd1b4cf89ac4f20b2c6417e8f0acb210efba2509dc2e8fcbef169096c5d4c510e05dbc1d88407b5e7e64f7f310f1196ffe913499a73e4c188b0ea_0"
           },
           "properties": {}
         },
@@ -930,37 +930,6 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "cdc4a973646246110e1124554cdc79404b9a67f385ca83a705e5c50fe447edd6e8800d3070737735d7d70f9b907fc3db5f863e300aefd7813dddfaf6263fdb5d_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "093133f1-83b1-3f00-8646-4e3e8b0bba82",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "xformers/benchmarks/LRA/setup/listops.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 44,
-                  "startColumn": 9,
-                  "endLine": 44,
-                  "endColumn": 32,
-                  "snippet": {
-                    "text": "        pickle.dump(ds_list, f)"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "71ceeddd295d9889ea952e73356fb2aa7acf99fcb9f28d21ffb8c364f3c6aeab2937519ea90b58aa63fa171c8505831ab984a511199447fbbe92ae330f6a3e2e_0"
           },
           "properties": {}
         },
@@ -1027,6 +996,37 @@
           "properties": {}
         },
         {
+          "ruleId": "093133f1-83b1-3f00-8646-4e3e8b0bba82",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/benchmarks/LRA/setup/listops.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 9,
+                  "endLine": 44,
+                  "endColumn": 32,
+                  "snippet": {
+                    "text": "        pickle.dump(ds_list, f)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "71ceeddd295d9889ea952e73356fb2aa7acf99fcb9f28d21ffb8c364f3c6aeab2937519ea90b58aa63fa171c8505831ab984a511199447fbbe92ae330f6a3e2e_0"
+          },
+          "properties": {}
+        },
+        {
           "ruleId": "c453b987-1539-35ac-b773-3bd037b398c4",
           "kind": "fail",
           "level": "warning",
@@ -1054,37 +1054,6 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "cc0c0515cb344f49dc8f7836fef357bd4982ef877d3dc384e31318356ebd542a5f09a4f09803d0fe55b84af985ad9f6618bbc5838373bcf4c14ee6c486632f61_2"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "bb0224c1-ed50-382e-b0e2-e2bda01282fa",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "xformers/benchmarks/LRA/setup/text.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 45,
-                  "startColumn": 9,
-                  "endLine": 45,
-                  "endColumn": 32,
-                  "snippet": {
-                    "text": "        pickle.dump(ds_list, f)"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "9ca7c480cd55b3e39ddbdcd7351e33da52bdaf29824a57147c15a0df6a2bec03b7936a69f116e43da1532f7a88d1d454e629012bdc672b72b59168c93164af54_0"
           },
           "properties": {}
         },
@@ -1151,33 +1120,33 @@
           "properties": {}
         },
         {
-          "ruleId": "be7af6cf-f96c-3d3d-bec4-7604353fe89c",
+          "ruleId": "bb0224c1-ed50-382e-b0e2-e2bda01282fa",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code."
+            "text": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format."
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "xformers/utils.py",
+                  "uri": "xformers/benchmarks/LRA/setup/text.py",
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 27,
-                  "startColumn": 17,
-                  "endLine": 27,
-                  "endColumn": 53,
+                  "startLine": 45,
+                  "startColumn": 9,
+                  "endLine": 45,
+                  "endColumn": 32,
                   "snippet": {
-                    "text": "                importlib.import_module(module_name)"
+                    "text": "        pickle.dump(ds_list, f)"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "c363f455c58b52bb3195ecdda1d309a93a8949f4c2351621de8fb1ce5bb78df9d83fd8ce3d44469919507274e7d1cbc389a2850fc15e99945cd1581463d0bf51_0"
+            "matchBasedId/v1": "9ca7c480cd55b3e39ddbdcd7351e33da52bdaf29824a57147c15a0df6a2bec03b7936a69f116e43da1532f7a88d1d454e629012bdc672b72b59168c93164af54_0"
           },
           "properties": {}
         },
@@ -1240,6 +1209,37 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "1d051fb46f56a5f11b2cf4e0bc23577a200a67684c200bb7145dff60eb8c01e2043a48bb6958f24d4c2d99267a570ac7f5c2a8ba69680c1ef79ce46e74f855a8_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "be7af6cf-f96c-3d3d-bec4-7604353fe89c",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Untrusted user input in `importlib.import_module()` function allows an attacker to load arbitrary code. Avoid dynamic values in `importlib.import_module()` or use a whitelist to prevent running untrusted code."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xformers/utils.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 17,
+                  "endLine": 27,
+                  "endColumn": 53,
+                  "snippet": {
+                    "text": "                importlib.import_module(module_name)"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "c363f455c58b52bb3195ecdda1d309a93a8949f4c2351621de8fb1ce5bb78df9d83fd8ce3d44469919507274e7d1cbc389a2850fc15e99945cd1581463d0bf51_0"
           },
           "properties": {}
         }
